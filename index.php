@@ -18,7 +18,7 @@ require 'common.php';
 <body>
   <div class="sidebar">
     <div class="logo-details">
-      <img src="images/svci.png.png" alt="SVCI LOGO">
+      <img src="img/svci.png.png" alt="SVCI LOGO">
       <span class="logo_name">ComputerLab</span>
     </div>
       <ul class="nav-links">
