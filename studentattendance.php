@@ -1,39 +1,3 @@
-<?php
-require 'common.php';
-
-//Grab all the users from our database
-$users = $database->select("users", [
-    'id',
-    'name',
-    'rfid_uid'
-]);
-
-require 'common.php';
-
-//Grab all users from our database
-$users = $database->select("users", [
-    'id',
-    'name',
-]);
-
-//Check if we have a year passed in through a get variable, otherwise use the current year
-if (isset($_GET['year'])) {
-    $current_year = int($_GET['year']);
-} else {
-    $current_year = date('Y');
-}
-
-//Check if we have a month passed in through a get variable, otherwise use the current year
-if (isset($_GET['month'])) {
-    $current_month = $_GET['month'];
-} else {
-    $current_month = date('n');
-}
-
-//Calculate the amount of days in the selected month
-$num_days = cal_days_in_month(CAL_GREGORIAN, $current_month, $current_year);
-
-?>
 
 
 <!DOCTYPE html>
@@ -51,7 +15,7 @@ $num_days = cal_days_in_month(CAL_GREGORIAN, $current_month, $current_year);
 <body>
   <div class="sidebar">
     <div class="logo-details">
-      <img src="images/svci.png.png" alt="SVCI LOGO">
+      <img src="img/svci.png.png" alt="SVCI LOGO">
       <span class="logo_name">ComputerLab</span>
     </div>
       <ul class="nav-links">
@@ -121,8 +85,27 @@ $num_days = cal_days_in_month(CAL_GREGORIAN, $current_month, $current_year);
         <i class='bx bx-chevron-down' ></i>
       </div>
     </nav>
-    <div class="home-content">
+      
+<?php
+require 'common.php';
 
+//Grab all the users from our database
+$users = $database->select("users", [
+    'id',
+    'name',
+    'rfid_uid'
+]);
+
+require 'common.php';
+
+//Grab all users from our database
+$users = $database->select("users", [
+    'id',
+    'name',
+]);
+?>
+
+    <div class="home-content">
       <div class="sales-boxes">
         <div class="recent-sales box">
           <div class="title">Students</div>
@@ -162,7 +145,25 @@ $num_days = cal_days_in_month(CAL_GREGORIAN, $current_month, $current_year);
           </div>
         </div>
 
+ <?php
+//Check if we have a year passed in through a get variable, otherwise use the current year
+if (isset($_GET['year'])) {
+    $current_year = int($_GET['year']);
+} else {
+    $current_year = date('Y');
+}
 
+//Check if we have a month passed in through a get variable, otherwise use the current year
+if (isset($_GET['month'])) {
+    $current_month = $_GET['month'];
+} else {
+    $current_month = date('n');
+}
+
+//Calculate the amount of days in the selected month
+$num_days = cal_days_in_month(CAL_GREGORIAN, $current_month, $current_year);
+
+?>
         <div class="top-sales box">
           <div class="title">Attendance</div>
           <table class="table table-striped table-responsive">
